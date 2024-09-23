@@ -4,27 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
     internal class Kurs
     {
-        private double werte;
-        public double Werte
+        private double wert;
+        public double Wert
         {
-            get { return werte; }
+            get { return wert; }
             set
             {
                 if (value == 0)
                 {
                     throw new Exception("Werte nicht angegeben!");
                 }
-                werte = value;
+                wert = value;
+            }
+        }
+        private DateTime datum;
+        public DateTime Datum
+        {
+            get { return datum; }
+            set
+            {
+                if (value < DateTime.Now)
+                {
+                    throw new Exception("Datum liegt in der Vergangenheit!");
+                }
+                datum = value;
             }
         }
 
         public override string ToString()
         {
-            return $"Werte: {werte}";
+            return $"Werte: {wert}, Datum: {datum}";
         }
     }
 }

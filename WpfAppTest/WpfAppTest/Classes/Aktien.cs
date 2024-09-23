@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
-    internal class Aktien
+    internal class Aktien : Wertpapier
     {
         private string kuerzel;
         public string Kuerzel
         {
             get { return kuerzel; }
-            set 
+            set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -25,7 +25,7 @@ namespace TradeUnrepublic
         public string Untrnehmen
         {
             get { return unternehmen; }
-            set 
+            set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -38,7 +38,7 @@ namespace TradeUnrepublic
         public double Dividende
         {
             get { return dividende; }
-            set 
+            set
             {
                 if (value < 0)
                 {
@@ -47,10 +47,10 @@ namespace TradeUnrepublic
                 dividende = value;
             }
         }
-        public Aktien(string _Namen, int _ISIN, string _Kuerzel, string _Unternehmen, double _Dividende)
+        public Aktien(string _Kuerzel, string _Unternehmen, double _Dividende) : base()
         {
             Kuerzel = _Kuerzel;
-            unternehmen= _Unternehmen;
+            unternehmen = _Unternehmen;
             Dividende = _Dividende;
         }
         public override string ToString()
@@ -59,4 +59,3 @@ namespace TradeUnrepublic
         }
     }
 }
-

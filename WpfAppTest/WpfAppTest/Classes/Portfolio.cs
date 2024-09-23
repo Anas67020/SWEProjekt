@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
     internal class Portfolio
     {
-        private List<Wertpapiere> wertpapiere;
-        public List<Wertpapiere> Wertpapiere
+        private List<WertpapierPosten> wertpapiere;
+        public List<WertpapierPosten> Wertpapiere
         {
             get { return wertpapiere; }
-            set 
+            set
             {
-            if (value == null)
+                if (value == null)
                 {
                     throw new Exception("Wertpapier Liste ist Leer!");
                 }
-            wertpapiere = value;
+                wertpapiere = value;
             }
         }
         public void verkaufen()
@@ -37,5 +37,5 @@ namespace TradeUnrepublic
         {
             return $"Wertpapiere: {wertpapiere} ";
         }
-        }
     }
+}

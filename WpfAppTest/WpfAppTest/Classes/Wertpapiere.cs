@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradeUnrepublic;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
-    abstract class Wertpapiere
+    abstract class Wertpapier
     {
         private string namen;
         public string Namen
@@ -34,10 +35,20 @@ namespace TradeUnrepublic
                 isin = value;
             }
         }
-        public Wertpapiere(string _namen, int _isin)
+        private List<Kurs> kurse;
+        public List<Kurs> Kurse
+        {
+            get { return kurse; }
+        }
+        public Wertpapier(string _namen, int _isin)
         {
             ISIN = _isin;
             Namen = _namen;
+
+        }
+
+        protected Wertpapier()
+        {
         }
 
         public void AnzeigenKurs()
@@ -45,6 +56,10 @@ namespace TradeUnrepublic
 
         }
         public void WerteHolen()
+        {
+
+        }
+        public void AddKurs()
         {
 
         }

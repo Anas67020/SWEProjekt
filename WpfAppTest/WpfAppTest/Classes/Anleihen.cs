@@ -4,40 +4,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
-    internal class Anleihen
+    internal class Anleihen : Wertpapier
     {
         private DateTime laufzeit;
         public DateTime Laufzeit
         {
             get { return laufzeit; }
-            set 
+            set
             {
-            if (value < DateTime.Now)
+                if (value < DateTime.Now)
                 {
                     throw new Exception("Laufzeit ist abgelaufen!");
                 }
-            laufzeit = value;
-             }
+                laufzeit = value;
+            }
         }
         private double kouponwert;
         public double Kouponwert
         {
             get { return kouponwert; }
             set
-            { 
-             if (value == 0)
+            {
+                if (value == 0)
                 {
                     throw new Exception("Kouponwert nicht angegeben");
                 }
-             kouponwert = value;
+                kouponwert = value;
             }
         }
-        public Anleihen(string _Namen, int _ISIN, DateTime _Laufzeit, double _Kouponwert)
+        public Anleihen(DateTime _Laufzeit, double _Kouponwert) : base()
         {
             Laufzeit = _Laufzeit;
-            Kouponwert= _Kouponwert;
+            Kouponwert = _Kouponwert;
         }
         public override string ToString()
         {

@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TradeUnrepublic;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
     internal class WertpapierPosten
     {
-        private Wertpapiere wp;
-        public Wertpapiere WP { get {  return wp; }
-            set 
+        private Wertpapier wp;
+        public Wertpapier WP
+        {
+            get { return wp; }
+            set
             {
                 if (value == null)
                 {
@@ -23,16 +26,16 @@ namespace TradeUnrepublic
         public int Anzahl
         {
             get { return anzahl; }
-            set 
+            set
             {
-            if (value == 0)
+                if (value == 0)
                 {
                     throw new Exception("Anzahl nicht angegeben!");
                 }
-            anzahl = value;
+                anzahl = value;
             }
         }
-        public WertpapierPosten(int _anzahl, Wertpapiere _wp)
+        public WertpapierPosten(int _anzahl, Wertpapier _wp)
         {
             Anzahl = _anzahl;
             WP = _wp;

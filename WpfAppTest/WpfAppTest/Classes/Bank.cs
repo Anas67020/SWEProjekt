@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
     internal class Bank
     {
-        public List<Wertpapiere> WertpapiereListe;
+        public List<Wertpapier> WertpapiereListe;
 
         public override string ToString()
         {

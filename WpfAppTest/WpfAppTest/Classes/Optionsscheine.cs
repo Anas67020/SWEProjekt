@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
-    internal class Optionsscheine
+    internal class Optionsscheine : Wertpapier
     {
         private DateTime laufzeitende;
         public DateTime Laufzeitende
@@ -14,9 +14,9 @@ namespace TradeUnrepublic
             get { return laufzeitende; }
             set
             {
-                if( value < DateTime.Now)
+                if (value < DateTime.Now)
                 {
-                    throw new Exception("Die Laufzeit ist Abgelaufen!"); 
+                    throw new Exception("Die Laufzeit ist Abgelaufen!");
                 }
                 laufzeitende = value;
             }
@@ -25,20 +25,20 @@ namespace TradeUnrepublic
         public string Optionstyp
         {
             get { return optionstyp; }
-            set 
-            { 
+            set
+            {
                 if (value == null)
                 {
                     throw new Exception("Optionstyp wurde nicht Angegeben!");
                 }
-                optionstyp = value; 
+                optionstyp = value;
             }
         }
         public string CallPut()
         {
             return Optionstyp = "call";
         }
-        public Optionsscheine(string _Namen, int _ISIN, DateTime _Laufzeitende, string _Optionstyp)
+        public Optionsscheine(DateTime _Laufzeitende, string _Optionstyp) : base()
         {
             Laufzeitende = Laufzeitende;
             Optionstyp = _Optionstyp;

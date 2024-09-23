@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TradeUnrepublic
+namespace WpfAppTest
 {
     internal class Kunde
     {
@@ -12,7 +12,7 @@ namespace TradeUnrepublic
         public string Name
         {
             get { return name; }
-            set 
+            set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -21,17 +21,17 @@ namespace TradeUnrepublic
                 name = value;
             }
         }
-        private Dictionary<string, Wertpapiere> wertPapierDict;
-        public Dictionary<string, Wertpapiere> WertPapierDict
+        private Dictionary<string, Wertpapier> wertPapierDict;
+        public Dictionary<string, Wertpapier> WertPapierDict
         {
             get { return wertPapierDict; }
-            set 
+            set
             {
-            if (value == null)
+                if (value == null)
                 {
                     throw new Exception("Wertpapier nicht Angegeben!");
                 }
-            wertPapierDict = value;
+                wertPapierDict = value;
             }
         }
         public void CountWertpapiere()
@@ -43,5 +43,4 @@ namespace TradeUnrepublic
             return $"Name: {name}, Wertpapier: {WertPapierDict}";
         }
     }
-    }
-
+}
