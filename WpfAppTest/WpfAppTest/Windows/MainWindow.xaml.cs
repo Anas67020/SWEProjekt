@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppTest;
 
 namespace TradeUnrepublic
 {
@@ -31,7 +32,12 @@ namespace TradeUnrepublic
             //MessageBox.Show("Button Clicked");
             if (sender == btn_Buy)
             {
-                MessageBox.Show("What do you want to invest in", "Confirmation", MessageBoxButton.YesNoCancel, MessageBoxImage.Question);
+                InputPopup popup = new InputPopup("Where do you want to Invest?");
+                if (popup.ShowDialog() == true)
+                {
+                    string userInput = popup.InputText;
+                    MessageBox.Show(userInput);
+                }
             }
             else if (sender == btn_Sell) txb_ClickOut2.Text = "Buttton two Clicked";
             else if (sender == btn_Chart) txb_ClickOut3.Text = "Buttton three Clicked";

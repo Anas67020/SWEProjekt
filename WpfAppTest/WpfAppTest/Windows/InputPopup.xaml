@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppTest"
         mc:Ignorable="d"
-        Title="InputPopup" Height="450" Width="800">
+        Title="InputPopup" Height="200" Width="400" ResizeMode="CanMinimize">
     <Grid>
-        
+
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
+            <TextBox x:Name="txb_Input" VerticalAlignment="Top" Height="30" FontSize="14"
+                     TextChanged="InputTextBox_TextChanged" Margin="0,3,0,0" />
+
+            <TextBlock x:Name="txbl_hint" 
+                       VerticalAlignment="Top" Margin="2,3,0,0" Height="30" Width="250" 
+                       Foreground="Gray" FontStyle="Italic" FontSize="14" 
+                       IsHitTestVisible="False" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
+            <Button x:Name="btn_Enter" Content="Enter" Click="btn_Clicked" Width="50" Height="30" Margin="0,0,50,0" />
+            <Button x:Name="btn_Cancel" Content="Cancel" Click="btn_Clicked" Width="50" Height="30"/>
+        </StackPanel>
     </Grid>
 </Window>
