@@ -55,6 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Aktien.cs" />
+    <Compile Include="Anleihen.cs" />
+    <Compile Include="Bank.cs" />
+    <Compile Include="ETF.cs" />
+    <Compile Include="Kunde.cs" />
+    <Compile Include="Kurs.cs" />
+    <Compile Include="Optionsscheine.cs" />
+    <Compile Include="Portfolio.cs" />
+    <Compile Include="Wertpapiere.cs" />
+    <Compile Include="WertpapierPosten.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
