@@ -69,7 +69,6 @@
     <Compile Include="Classes\Kurs.cs" />
     <Compile Include="Classes\Optionsscheine.cs" />
     <Compile Include="Classes\Portfolio.cs" />
-    <Compile Include="Classes\Wertpapiere.cs" />
     <Compile Include="Classes\WertpapierPosten.cs" />
     <Page Include="Windows\InputPopup.xaml">
       <SubType>Designer</SubType>
@@ -83,6 +82,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Wertpapier.cs" />
     <Compile Include="Windows\InputPopup.xaml.cs">
       <DependentUpon>InputPopup.xaml</DependentUpon>
     </Compile>
