@@ -55,16 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Aktien.cs" />
-    <Compile Include="Anleihen.cs" />
-    <Compile Include="Bank.cs" />
-    <Compile Include="ETF.cs" />
-    <Compile Include="Kunde.cs" />
-    <Compile Include="Kurs.cs" />
-    <Compile Include="Optionsscheine.cs" />
-    <Compile Include="Portfolio.cs" />
-    <Compile Include="Wertpapiere.cs" />
-    <Compile Include="WertpapierPosten.cs" />
+    <Compile Include="Classes\Aktien.cs" />
+    <Compile Include="Classes\Anleihen.cs" />
+    <Compile Include="Classes\Bank.cs" />
+    <Compile Include="Classes\ETF.cs" />
+    <Compile Include="Classes\Kunde.cs" />
+    <Compile Include="Classes\Kurs.cs" />
+    <Compile Include="Classes\Optionsscheine.cs" />
+    <Compile Include="Classes\Portfolio.cs" />
+    <Compile Include="Classes\Wertpapiere.cs" />
+    <Compile Include="Classes\WertpapierPosten.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,13 +77,13 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PageTwo.xaml">
+    <Page Include="Views\PageTwo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageTwo.xaml.cs">
+    <Compile Include="Views\PageTwo.xaml.cs">
       <DependentUpon>PageTwo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,5 +111,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

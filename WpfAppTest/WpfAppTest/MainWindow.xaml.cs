@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfAppTest
+namespace TradeUnrepublic
 {
     /// <summary>
     /// Interaktionslogik für MainWindow.xaml
@@ -39,7 +39,7 @@ namespace WpfAppTest
             }
             else if (sender == btn_NextPage)
             {
-                MainFrame.Navigate(new PageTwo());
+                MainFrame.Content = new PageTwo();
             }
             else if (sender == btn_FirstPage)
             {

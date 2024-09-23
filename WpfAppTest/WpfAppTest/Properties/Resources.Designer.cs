@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WpfAppTest.Properties
+namespace TradeUnrepublic.Properties
 {
 
 
