@@ -34,7 +34,7 @@ namespace WpfAppTest
                 kouponwert = value;
             }
         }
-        public Anleihen(DateTime _Laufzeit, double _Kouponwert) : base()
+        public Anleihen(String _Name, int _ISIN, DateTime _Laufzeit, double _Kouponwert) : base(_Name, _ISIN)
         {
             Laufzeit = _Laufzeit;
             Kouponwert = _Kouponwert;

@@ -38,7 +38,7 @@ namespace WpfAppTest
         {
             return Optionstyp = "call";
         }
-        public Optionsscheine(DateTime _Laufzeitende, string _Optionstyp) : base()
+        public Optionsscheine(string _Name, int _ISIN, DateTime _Laufzeitende, string _Optionstyp) : base(_Name, _ISIN)
         {
             Laufzeitende = Laufzeitende;
             Optionstyp = _Optionstyp;

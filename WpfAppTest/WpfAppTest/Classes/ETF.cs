@@ -36,7 +36,7 @@ namespace WpfAppTest
                 basis = value;
             }
         }
-        public ETF(string _Art, string _Basis) : base()
+        public ETF(string _Name, int _ISIN, string _Art, string _Basis) : base(_Name, _ISIN)
         {
             Art = _Art;
             Basis = _Basis;

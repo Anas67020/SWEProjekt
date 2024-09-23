@@ -47,7 +47,7 @@ namespace WpfAppTest
                 dividende = value;
             }
         }
-        public Aktien(string _Kuerzel, string _Unternehmen, double _Dividende) : base()
+        public Aktien(string _Name, int _ISIN, string _Kuerzel, string _Unternehmen, double _Dividende) : base(_Name, _ISIN)
         {
             Kuerzel = _Kuerzel;
             unternehmen = _Unternehmen;
