@@ -7,7 +7,72 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleY="0" CenterX="0.5" CenterY="0.5" AngleX="0"/>
+                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-51"/>
+                        <TranslateTransform Y="-0.4"/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF330020" Offset="0"/>
+                <GradientStop Color="#FF800070"/>
+                <GradientStop Color="#FFA800BB"/>
+                <GradientStop Color="#FF9200EA"/>
+                <GradientStop Color="#FF7D00FF"/>
+                <GradientStop Color="#FF9400FF"/>
+                <GradientStop Color="#FFFF00F5"/>
+                <GradientStop Color="#FFC300FF" Offset="0.25"/>
+                <GradientStop Color="#FFA000FF" Offset="0.5"/>
+                <GradientStop Color="#FF7100FF" Offset="0.75"/>
+                <GradientStop Color="#FF4E00FF" Offset="1"/>
+
+            </LinearGradientBrush>
+        </Grid.Background>
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+        
+        
+        
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="10">
+            <Grid VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+               <Button x:Name="btn_Buy" Click="Button_Click" Margin="5" Grid.Row="0" Padding="10" Content="Buy" >
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btn_Sell" Click="Button_Click" Margin="5" Grid.Row="1" Padding="10" Content="Sell" >
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btn_Chart" Click="Button_Click" Margin="5" Grid.Row="2" Padding="10" Content="Show Owend" >
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
+        
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="10"> 
+            <Grid HorizontalAlignment="Center">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
@@ -74,71 +139,45 @@
         <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="10">
             <Grid x:Name="Content">
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,50,0">
-            <TextBlock x:Name="txb_ClickOut1" TextAlignment="Center" Foreground="White" RenderTransformOrigin="0.5,0.5" Width="310" Height="70" Margin="0,0,0,5">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-                <TextBlock.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="ForestGreen"/>
-                        <GradientStop Color="Yellow" Offset="1.25"/>
-                    </LinearGradientBrush>
-                </TextBlock.Background>
-            </TextBlock>
-            <TextBlock x:Name="txb_ClickOut2" TextAlignment="Center" Width="310" Height="70" Margin="0,0,0,5">
-                <TextBlock.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Yellow"/>
-                        <GradientStop Color="Orange" Offset="1.25"/>
-                    </LinearGradientBrush>
-                </TextBlock.Background>
-            </TextBlock>
-            <TextBlock x:Name="txb_ClickOut3" Foreground="White" TextAlignment="Center" Width="310" Height="70" Margin="0,0,0,5">
-                <TextBlock.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Orange"/>
-                        <GradientStop Color="Red" Offset="1.25"/>
-                    </LinearGradientBrush>
-                </TextBlock.Background>
-            </TextBlock>
-        </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,50,0">
+                    <TextBlock x:Name="txb_ClickOut1" TextAlignment="Center" Foreground="White" RenderTransformOrigin="0.5,0.5" Width="310" Height="70" Margin="0,0,0,5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="1"/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="ForestGreen"/>
+                                <GradientStop Color="Yellow" Offset="1.25"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock x:Name="txb_ClickOut2" TextAlignment="Center" Width="310" Height="70" Margin="0,0,0,5">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Yellow"/>
+                                <GradientStop Color="Orange" Offset="1.25"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                    <TextBlock x:Name="txb_ClickOut3" Foreground="White" TextAlignment="Center" Width="310" Height="70" Margin="0,0,0,5">
+                        <TextBlock.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Orange"/>
+                                <GradientStop Color="Red" Offset="1.25"/>
+                            </LinearGradientBrush>
+                        </TextBlock.Background>
+                    </TextBlock>
+                </StackPanel>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
-            <Button x:Name="btn_FirstPage" Click="Button_Click" Margin="0,0,5,0" Height="35" Width="65" Content="Page One" Foreground="White" RenderTransformOrigin="0.535,1.288" >
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="DarkGreen"/>
-                        <GradientStop Color="LightGreen" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-
-            <Button x:Name="btn_NextPage" Click="Button_Click" Margin="0,0,5,0" Height="35" Width="65" Content="Page Two" Foreground="White" RenderTransformOrigin="0.535,1.288" >
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="DarkGreen"/>
-                        <GradientStop Color="LightGreen" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-
-            <Button x:Name="btn_Exit" Click="Button_Click" Margin="0,0,5,0" Height="35" Width="45" Content="Exit" Foreground="White" >
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="DarkRed"/>
-                        <GradientStop Color="LightPink" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-
-        </StackPanel>
-
-        <Frame Name="MainFrame" Margin="0,0,0,0" NavigationUIVisibility="Hidden"/>
+                <Frame Name="MainFrame" Margin="0,0,0,0" NavigationUIVisibility="Hidden"/>
+                
+            </Grid>
+        </Border>
+        
     </Grid>
 </Window>

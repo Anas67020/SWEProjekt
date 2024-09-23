@@ -39,8 +39,19 @@ namespace TradeUnrepublic
                     MessageBox.Show(userInput);
                 }
             }
-            else if (sender == btn_Sell) txb_ClickOut2.Text = "Buttton two Clicked";
-            else if (sender == btn_Chart) txb_ClickOut3.Text = "Buttton three Clicked";
+            else if (sender == btn_Sell)
+            {
+                InputPopup popup = new InputPopup("What do you want to sell?");
+                if (popup.ShowDialog() == true)
+                {
+                    string userInput = popup.InputText;
+                    MessageBox.Show(userInput);
+                }
+            }
+            else if (sender == btn_Chart)
+            {
+                MessageBox.Show("You own the following");
+            }
             else if (sender == btn_Exit)
             {
                 MessageBoxResult exit = MessageBox.Show("Do you realy want to Exit?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
