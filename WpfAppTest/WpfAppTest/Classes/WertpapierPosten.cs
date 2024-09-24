@@ -42,7 +42,7 @@ namespace WpfAppTest
         }
         public override string ToString()
         {
-            return $"Wertpapier: {wp}, Anzahl: {anzahl}";
+            return $"Wertpapier: {wp.Namen}, Anzahl: {anzahl}";
         }
     }
 }

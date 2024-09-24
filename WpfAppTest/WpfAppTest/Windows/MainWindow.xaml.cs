@@ -22,6 +22,8 @@ namespace TradeUnrepublic
     /// </summary>
     public partial class MainWindow : Window
     {
+        Portfolio p = new Portfolio();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -29,14 +31,21 @@ namespace TradeUnrepublic
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("Button Clicked");
             if (sender == btn_Buy)
             {
-                InputPopup popup = new InputPopup("Where do you want to Invest?");
+                InputPopup popup = new InputPopup("How much do you want to buy?");
                 if (popup.ShowDialog() == true)
                 {
                     string userInput = popup.InputText;
-                    MessageBox.Show(userInput);
+                    string chosenStock = popup.cbx_chose.Text;  // Assuming this is the ComboBox value
+                    if (int.TryParse(userInput, out int anzahl))
+                    {
+                        p.kaufen(chosenStock, anzahl);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please enter a valid number.");
+                    }
                 }
             }
             else if (sender == btn_Sell)
@@ -45,16 +54,16 @@ namespace TradeUnrepublic
                 if (popup.ShowDialog() == true)
                 {
                     string userInput = popup.InputText;
-                    MessageBox.Show(userInput);
+                    p.verkaufen(userInput);
                 }
             }
             else if (sender == btn_Chart)
             {
-                MessageBox.Show("You own the following");
+                MessageBox.Show("You own the following: " + p.Anzeigen());
             }
             else if (sender == btn_Exit)
             {
-                MessageBoxResult exit = MessageBox.Show("Do you realy want to Exit?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult exit = MessageBox.Show("Do you really want to Exit?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (exit == MessageBoxResult.Yes) Application.Current.Shutdown();
             }
             else if (sender == btn_NextPage)
@@ -65,7 +74,7 @@ namespace TradeUnrepublic
             {
                 MainFrame.Content = null;
             }
-            else MessageBox.Show("Button not found");
         }
     }
 }
+

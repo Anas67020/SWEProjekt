@@ -8,6 +8,9 @@
         Title="InputPopup" Height="200" Width="400" ResizeMode="CanMinimize">
     <Grid>
 
+        <ComboBox x:Name="cbx_chose" VerticalAlignment="Top" HorizontalAlignment="Center"
+                   Height="30" Width="250" Margin="20"/>
+
         <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
             <TextBox x:Name="txb_Input" VerticalAlignment="Top" Height="30" FontSize="14"
                      TextChanged="InputTextBox_TextChanged" Margin="0,3,0,0" />
@@ -23,4 +26,5 @@
             <Button x:Name="btn_Cancel" Content="Cancel" Click="btn_Clicked" Width="50" Height="30"/>
         </StackPanel>
     </Grid>
+    
 </Window>

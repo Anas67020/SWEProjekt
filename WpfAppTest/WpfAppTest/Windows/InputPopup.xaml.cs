@@ -21,11 +21,14 @@ namespace WpfAppTest
     {
         public string InputText { get; private set; }
 
+        Portfolio port = new Portfolio();
+
         public InputPopup(string input = "")
         {
             InitializeComponent();
             UpdateHintVisibility();
             txbl_hint.Text = input;
+            PopulateComboBox();
         }
 
         private void btn_Clicked(object sender, RoutedEventArgs e)
@@ -52,6 +55,24 @@ namespace WpfAppTest
             else
             {
                 txbl_hint.Visibility = Visibility.Collapsed; // Hide hint if TextBox has text
+            }
+        }
+
+        private void PopulateComboBox()
+        {
+            var stocks = port.Wertpapiere; // Assuming Wertpapiere is a list of WertpapierPosten
+
+            if (stocks != null && stocks.Count > 0)
+            {
+                foreach (var posten in stocks)
+                {
+                    cbx_chose.Items.Add(posten.WP.Namen); // Add the stock names to the ComboBox
+                }
+            }
+            else
+            {
+                cbx_chose.Items.Add("No available stocks"); // Handle the case where no stocks are available
+                cbx_chose.IsEnabled = false; // Disable the ComboBox if there are no items
             }
         }
 
