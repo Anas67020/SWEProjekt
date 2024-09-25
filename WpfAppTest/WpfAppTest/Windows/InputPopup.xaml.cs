@@ -64,6 +64,7 @@ namespace WpfAppTest
 
             if (stocks != null && stocks.Count > 0)
             {
+                cbx_chose.IsEnabled = true;
                 foreach (var posten in stocks)
                 {
                     cbx_chose.Items.Add(posten.WP.Namen); // Add the stock names to the ComboBox

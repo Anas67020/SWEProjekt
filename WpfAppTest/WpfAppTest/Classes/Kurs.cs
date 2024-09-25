@@ -72,7 +72,7 @@ public class Kurs
         {
             using (var client = new HttpClient())
             {
-                string apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={apiKey}";
+                string apiUrl = "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=BA524MTAQU768D6W";
 
                 // Send request
                 HttpResponseMessage response = await client.GetAsync(apiUrl);
