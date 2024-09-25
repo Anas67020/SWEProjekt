@@ -23,6 +23,7 @@ namespace TradeUnrepublic
         public PageTwo()
         {
             InitializeComponent();
+            /*
             InitializeChartData();
             var timer = new DispatcherTimer
             {
@@ -30,8 +31,10 @@ namespace TradeUnrepublic
             };
             timer.Tick += Timer_Tick;
             timer.Start();
+            */
         }
 
+        /*
         private async void InitializeChartData()
         {
             try
@@ -87,6 +90,7 @@ namespace TradeUnrepublic
             DataContext = null;
             DataContext = this;
         }
+        */
     }
 
 }

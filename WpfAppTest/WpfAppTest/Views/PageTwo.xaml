@@ -33,9 +33,11 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <lvc:CartesianChart Series="{Binding StockPricesSeries}" 
+         <!-- <lvc:CartesianChart Series="{Binding StockPricesSeries}" 
                             AxisX="{Binding DateAxis}" 
                             AxisY="{Binding PriceAxis}" 
                             LegendLocation="Right"/>
+        -->
+        <TextBlock Text="Comming soon" Margin="50" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50"/>
     </Grid>
 </Page>
