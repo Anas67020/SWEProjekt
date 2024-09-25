@@ -1,94 +1,111 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using static WpfAppTest.Wertpapier;
+using System.IO;
 
-namespace WpfAppTest
+public class MetaData
 {
-    internal class Kurs
+    [JsonProperty("1. Information")]
+    public string Information { get; set; }
+
+    [JsonProperty("2. Symbol")]
+    public string Symbol { get; set; }
+
+    [JsonProperty("3. Last Refreshed")]
+    public DateTime LastRefreshed { get; set; }
+
+    [JsonProperty("4. Output Size")]
+    public string OutputSize { get; set; }
+
+    [JsonProperty("5. Time Zone")]
+    public string TimeZone { get; set; }
+}
+
+public class DailyData
+{
+    [JsonProperty("1. open")]
+    public string Open { get; set; }
+
+    [JsonProperty("2. high")]
+    public string High { get; set; }
+
+    [JsonProperty("3. low")]
+    public string Low { get; set; }
+
+    [JsonProperty("4. close")]
+    public string Close { get; set; }
+
+    [JsonProperty("5. volume")]
+    public string Volume { get; set; }
+}
+
+public class TimeSeriesDaily
+{
+    [JsonProperty("Time Series (Daily)")]
+    public Dictionary<string, DailyData> DailyTimeSeries { get; set; }
+}
+
+public class StockData
+{
+    [JsonProperty("Meta Data")]
+    public MetaData MetaData { get; set; }
+
+    [JsonProperty("Time Series (Daily)")]
+    public Dictionary<string, DailyData> TimeSeriesDaily { get; set; }
+}
+
+public class Kurs
+{
+    public List<string> DailyPrices { get; private set; } = new List<string>();
+    public List<double> Werte { get; private set; } = new List<double>();
+
+    public Kurs()
     {
-        public List<string> DailyPrices;
-        private List<double> werte;
-        public List<double> Werte {get;set;}
-        private DateTime daten;
-        public DateTime Daten {get;set;}
+    }
 
-        public Kurs()
+    // Fetch stock data from API and parse it
+    public async Task FetchStockDataAsync(string symbol = "IBM", string apiKey = "your_real_api_key")
+    {
+        try
         {
-            
-        }
-
-        //das pakage das für diese anwendungen installiert werden muss ist das: Install-Package Newtonsoft.Json
-        //sorgt dafür die werte aus der Api zu holfen und sie auf der GUI auszugeben
-        // kann aber nicht testen, weil ich da pakage irgendwie nicht downloaden kann 
-        public void WerteHolen()
-        {
-            try
+            using (var client = new HttpClient())
             {
-                using (var client = new HttpClient())
+                string apiUrl = $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={apiKey}";
+
+                // Send request
+                HttpResponseMessage response = await client.GetAsync(apiUrl);
+                response.EnsureSuccessStatusCode();
+
+                // Read the response as JSON
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+
+                // Deserialize JSON into StockData object
+                StockData stockData = JsonConvert.DeserializeObject<StockData>(jsonResponse);
+
+                if (stockData != null && stockData.TimeSeriesDaily != null)
                 {
-                    // API URL
-                    var apiUrl = "http://alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo";
+                    // Clear previous data
+                    DailyPrices.Clear();
+                    Werte.Clear();
 
-                    // Send a synchronous GET request to the API
-                    HttpResponseMessage response = client.GetAsync(apiUrl).Result;
-
-                    // Ensure the request was successful
-                    response.EnsureSuccessStatusCode();
-
-                    // Read the response content as a string (blocking call)
-                    string jsonResponse = response.Content.ReadAsStringAsync().Result;
-
-                    // Deserialize the JSON string to your 'Properties' object
-                    Properties deserialized = JsonConvert.DeserializeObject<Properties>(jsonResponse);
-
-                    // Assuming 'Properties' has a collection 'DailyPrices', iterate through it
-                    if (deserialized != null && deserialized.DailyPrices != null)
+                    // Parse the daily data
+                    foreach (var daily in stockData.TimeSeriesDaily)
                     {
-                        DailyPrices = deserialized.DailyPrices.Select(dp => dp.Date + ": " + dp.Price).ToList();
-
-                        // Print or use the prices in the UI
-                        foreach (var price in DailyPrices)
-                        {
-                            Console.WriteLine(price);
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("No data available or deserialization failed.");
+                        DailyPrices.Add(daily.Key);  // Store the date
+                        Werte.Add(double.Parse(daily.Value.Close));  // Store the closing price as a double
                     }
                 }
-            }
-            catch (HttpRequestException httpRequestException)
-            {
-                Console.WriteLine("Error fetching data from API: " + httpRequestException.Message);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred: " + ex.Message);
+                else
+                {
+                    Console.WriteLine("No data available or deserialization failed.");
+                }
             }
         }
-
-        public class DailyPrice
+        catch (Exception ex)
         {
-            public string Date { get; set; }
-            public decimal Price { get; set; }
-        }
-
-        public class Properties
-        {
-            public List<DailyPrice> DailyPrices { get; set; }
-        }
-
-        //dazu da das format der json datei zu bestimmen und auf die Daten aus der Api und der json datei zugreifen zu können
-
-        public override string ToString()
-        {
-            return $"Werte: {werte}, Datum: {daten}";
+            Console.WriteLine($"Error fetching data: {ex.Message}");
         }
     }
 }

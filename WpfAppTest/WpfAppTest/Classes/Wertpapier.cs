@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TradeUnrepublic;
@@ -25,6 +22,7 @@ namespace WpfAppTest
                 namen = value;
             }
         }
+
         private int isin;
         public int ISIN
         {
@@ -38,37 +36,47 @@ namespace WpfAppTest
                 isin = value;
             }
         }
+
         private List<Kurs> kurse;
-        public List<Kurs> Kurse
-        {
-            get { return kurse; }
-        }
+        public List<Kurs> Kurse => kurse;
+
         public Wertpapier(string _namen, int _isin)
         {
             ISIN = _isin;
             Namen = _namen;
-
+            kurse = new List<Kurs>();
         }
 
-        protected Wertpapier()
+        protected Wertpapier() { }
+
+        // Displays the latest stock prices by fetching them asynchronously
+        public async void AnzeigenKurs()
         {
+            await AddKurs();
         }
 
-        public void AnzeigenKurs()
+        // Fetch stock data and add the latest Kurs instance to the list
+        public async Task AddKurs()
         {
-            AddKurs();
+            try
+            {
+                Kurs kurs = new Kurs();
+                await kurs.FetchStockDataAsync(Namen);  // Assuming Namen is used as the stock symbol
+
+                if (kurs.Werte.Count > 0)
+                {
+                    kurse.Add(kurs); // Add the Kurs instance to the list
+                    MessageBox.Show($"Stock data added for {Namen}. Last Close: {kurs.Werte[1]:C}");
+                }
+                else
+                {
+                    MessageBox.Show($"No data available for {Namen}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error fetching stock data for {Namen}: {ex.Message}");
+            }
         }
-        
-
-
-        // hier müssten eigentlich die daten aus der werteholenmethode ausgegeben werden, wenn ich alles richtig gemacht habe
-        public void AddKurs()
-        {
-            Kurs kurs = new Kurs();
-            kurs.WerteHolen();// mit angegebenem Koordinatensystem eigentlich
-        }
-        
-
-
     }
 }
