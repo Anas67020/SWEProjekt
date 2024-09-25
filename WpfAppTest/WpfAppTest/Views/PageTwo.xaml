@@ -4,11 +4,39 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TradeUnrepublic"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" d:DesignWidth="812.885"
       Title="PageTwo" Height="466">
 
-    <Grid Background="White">
-        <TextBlock Text="Welcome to Page two" TextAlignment="Center" Margin="150"/>
-        <Button Height="60" Width="120" Content="Go Back" Click="Button_Clicked" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="80"/>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleY="0" CenterX="0.5" CenterY="0.5" AngleX="0"/>
+                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-51"/>
+                        <TranslateTransform Y="-0.4"/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF330020" Offset="0"/>
+                <GradientStop Color="#FF800070"/>
+                <GradientStop Color="#FFA800BB"/>
+                <GradientStop Color="#FF9200EA"/>
+                <GradientStop Color="#FF7D00FF"/>
+                <GradientStop Color="#FF9400FF"/>
+                <GradientStop Color="#FFFF00F5"/>
+                <GradientStop Color="#FFC300FF" Offset="0.25"/>
+                <GradientStop Color="#FFA000FF" Offset="0.5"/>
+                <GradientStop Color="#FF7100FF" Offset="0.75"/>
+                <GradientStop Color="#FF4E00FF" Offset="1"/>
+
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <lvc:CartesianChart Series="{Binding StockPricesSeries}" 
+                            AxisX="{Binding DateAxis}" 
+                            AxisY="{Binding PriceAxis}" 
+                            LegendLocation="Right"/>
     </Grid>
 </Page>

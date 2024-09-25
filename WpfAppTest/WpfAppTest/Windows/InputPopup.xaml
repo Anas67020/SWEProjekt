@@ -5,26 +5,85 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppTest"
         mc:Ignorable="d"
-        Title="InputPopup" Height="200" Width="400" ResizeMode="CanMinimize">
+        Title="InputPopup" Height="200" Width="400" ResizeMode="CanMinimize" WindowStyle="None" WindowStartupLocation="CenterOwner">
     <Grid>
 
-        <ComboBox x:Name="cbx_chose" VerticalAlignment="Top" HorizontalAlignment="Center"
-                   Height="30" Width="250" Margin="20"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <LinearGradientBrush.RelativeTransform>
+                    <TransformGroup>
+                        <ScaleTransform CenterY="0.5" CenterX="0.5" ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleY="0" CenterX="0.5" CenterY="0.5" AngleX="0"/>
+                        <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-51"/>
+                        <TranslateTransform Y="-0.4"/>
+                    </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color="#FF330020" Offset="0"/>
+                <GradientStop Color="#FF800070"/>
+                <GradientStop Color="#FFA800BB"/>
+                <GradientStop Color="#FF9200EA"/>
+                <GradientStop Color="#FF7D00FF"/>
+                <GradientStop Color="#FF9400FF"/>
+                <GradientStop Color="#FFFF00F5"/>
+                <GradientStop Color="#FFC300FF" Offset="0.25"/>
+                <GradientStop Color="#FFA000FF" Offset="0.5"/>
+                <GradientStop Color="#FF7100FF" Offset="0.75"/>
+                <GradientStop Color="#FF4E00FF" Offset="1"/>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="250">
-            <TextBox x:Name="txb_Input" VerticalAlignment="Top" Height="30" FontSize="14"
-                     TextChanged="InputTextBox_TextChanged" Margin="0,3,0,0" />
+            </LinearGradientBrush>
+        </Grid.Background>
 
-            <TextBlock x:Name="txbl_hint" 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1">
+            <Grid VerticalAlignment="Center">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <ComboBox x:Name="cbx_chose" Width="250" Grid.Row="0"/>
+
+                <Grid Width="250" Grid.Row="1">
+                    <TextBox x:Name="txb_Input" VerticalAlignment="Top" Height="30" FontSize="14" 
+                             TextChanged="InputTextBox_TextChanged" Margin="0,3,0,0" />
+
+                    <TextBlock x:Name="txbl_hint" 
                        VerticalAlignment="Top" Margin="2,3,0,0" Height="30" Width="250" 
                        Foreground="Gray" FontStyle="Italic" FontSize="14" 
                        IsHitTestVisible="False" />
-        </Grid>
+                </Grid>
+            </Grid>
+        </Border>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,30">
-            <Button x:Name="btn_Enter" Content="Enter" Click="btn_Clicked" Width="50" Height="30" Margin="0,0,50,0" />
-            <Button x:Name="btn_Cancel" Content="Cancel" Click="btn_Clicked" Width="50" Height="30"/>
-        </StackPanel>
+
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+            <Grid HorizontalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btn_Enter" Content="Enter" Click="btn_Clicked"
+                        Grid.Row="0" Width="100" Margin="5,0" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btn_Cancel" Content="Cancel" Click="btn_Clicked" 
+                        Grid.Column="1" Width="100" BorderBrush="{x:Null}">
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
+        
     </Grid>
     
 </Window>
