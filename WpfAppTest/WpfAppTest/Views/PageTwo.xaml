@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TradeUnrepublic"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-      mc:Ignorable="d" d:DesignWidth="812.885"
-      Title="PageTwo" Height="466">
+      Title="PageTwo" Height="360" Width="590">
 
     <Grid>
         <Grid.Background>
